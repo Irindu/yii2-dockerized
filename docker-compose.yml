@@ -1,0 +1,28 @@
+version: '2.2'
+
+volumes:
+  assets_data: {}
+
+services:
+  nginx:
+    image: local/yii2-dockerized
+    command: 'nginx -g "daemon off;"'
+    ports:
+    - 80:80
+    volumes:
+    - assets_data:/home/ubuntu/app/web/assets
+    - ./app:/home/ubuntu/app
+    links:
+    - php:php
+
+  php:
+    image: local/yii2-dockerized
+    build:
+      context: .
+      args:
+        WUID: $WUID
+        WGID: $WGID
+    command: php-fpm7.1 --nodaemonize --fpm-config /etc/php/7.1/fpm/php-fpm.conf
+    volumes:
+    - assets_data:/home/ubuntu/app/web/assets
+    - ./app:/home/ubuntu/app

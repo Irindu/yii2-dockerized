@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+set -e
+
+if [ -n "${GITHUB_API_TOKEN}" ]
+then
+    gosu www-data composer.phar config -g github-oauth.github.com ${GITHUB_API_TOKEN}
+fi
+
+exec gosu www-data composer.phar "$@"
