@@ -22,6 +22,7 @@ RUN : \
         php7.1-xml \
         php7.1-memcached \
         php7.1-zip \
+        php7.1-curl \
         nginx \
         cron \
         curl \
