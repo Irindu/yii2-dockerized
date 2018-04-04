@@ -12,8 +12,8 @@ services:
     volumes:
     - assets_data:/home/ubuntu/app/web/assets
     - ./app:/home/ubuntu/app
-    links:
-    - php:php
+    depends_on:
+    - php
 
   php:
     image: local/yii2-dockerized
