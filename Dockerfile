@@ -28,6 +28,7 @@ RUN : \
         curl \
         git \
         unzip \
+        rsync \
     ;
 
 RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer.phar --install-dir=/usr/local/bin
